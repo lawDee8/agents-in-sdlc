@@ -1,0 +1,416 @@
+/* Tagliato Fine — one stylesheet, mobile first (375 px). Components use tokens only. */
+
+/* ---------- Fonts (self-hosted, OFL, see /fonts) ---------- */
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("../fonts/cormorant-garamond-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("../fonts/cormorant-garamond-latin-500-italic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("../fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pinyon Script";
+  src: url("../fonts/pinyon-script-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Tokens ---------- */
+:root {
+  /* Brand constants, identical in both themes */
+  --gold: #C9A44C;
+  --gold-light: #E6CF8A;
+
+  /* Type */
+  --font-serif: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-script: "Pinyon Script", "Snell Roundhand", cursive;
+  --step--1: 1rem;        /* 16 px: small print, never smaller */
+  --step-0: 1.1875rem;    /* 19 px: body (Cormorant runs small) */
+  --step-1: 1.4375rem;    /* 23 px */
+  --step-2: 1.75rem;      /* 28 px */
+  --step-3: 2.25rem;      /* 36 px */
+  --step-4: 3rem;         /* 48 px: hero name */
+  --leading: 1.5;
+  --leading-tight: 1.15;
+
+  /* Space */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --gutter: 1rem;
+  --measure: 38rem;
+  --radius: 2px;
+  --tap: 44px;
+
+  /* Motion */
+  --theme-fade: 1.5s;
+}
+
+/* Light — Calacatta (open). Also the default when JS is off. */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --stone: #EDE8DF;
+  --vein-1: #B8B1A5;
+  --text: #2B2418;
+  --text-muted: #5C5243;
+  /* Gold fails AA as text on light (2.1:1); accent text uses a dark bronze (5.5:1). */
+  --accent: #7A5E1F;
+  --panel: rgb(247 243 236 / 0.92);   /* #F7F3EC */
+  --panel-solid: #F7F3EC;
+  --rule: var(--gold);
+  --on-gold: #16140F;
+  --focus: #2B2418;
+  --marble: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640'%3E%3Cfilter id='a' x='0' y='0' width='1' height='1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0035 .011' numOctaves='5' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.722 0 0 0 0 0.694 0 0 0 0 0.647 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0 0 0 0 0 0 0 0 0 .07 0 0 0 0 0 0 0 0 0 0 0 0'/%3E%3C/feComponentTransfer%3E%3CfeGaussianBlur stdDeviation='.6'/%3E%3C/filter%3E%3Cfilter id='b' x='0' y='0' width='1' height='1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .0025' numOctaves='4' seed='23' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.788 0 0 0 0 0.643 0 0 0 0 0.298 0 1 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0 0 0 0 0 0 0 0 0 0 0 0 0'/%3E%3C/feComponentTransfer%3E%3CfeGaussianBlur stdDeviation='.6'/%3E%3C/filter%3E%3Crect width='640' height='640' filter='url(%23a)'/%3E%3Crect width='640' height='640' filter='url(%23b)'/%3E%3C/svg%3E");
+}
+
+/* Dark — Nero Marquina (closed) */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --stone: #0F0E0D;
+  --vein-1: #D9D4CA;
+  --text: #EFE6CF;
+  --text-muted: #B5AC98;
+  --accent: var(--gold-light);
+  --panel: rgb(22 20 15 / 0.92);      /* #16140F */
+  --panel-solid: #16140F;
+  --rule: var(--gold);
+  --on-gold: #16140F;
+  --focus: var(--gold-light);
+  --marble: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640'%3E%3Cfilter id='a' x='0' y='0' width='1' height='1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0035 .011' numOctaves='5' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.851 0 0 0 0 0.831 0 0 0 0 0.792 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0 0 0 0 0 0 0 0 0 .07 0 0 0 0 0 0 0 0 0 0 0 0'/%3E%3C/feComponentTransfer%3E%3CfeGaussianBlur stdDeviation='.6'/%3E%3C/filter%3E%3Cfilter id='b' x='0' y='0' width='1' height='1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .0025' numOctaves='4' seed='23' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.788 0 0 0 0 0.643 0 0 0 0 0.298 0 1 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0 0 0 0 0 0 0 0 0 0 0 0 0'/%3E%3C/feComponentTransfer%3E%3CfeGaussianBlur stdDeviation='.6'/%3E%3C/filter%3E%3Crect width='640' height='640' filter='url(%23a)'/%3E%3Crect width='640' height='640' filter='url(%23b)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: var(--step-0);
+  line-height: var(--leading);
+  color: var(--text);
+  background-color: var(--stone);
+  background-image: var(--marble);
+  background-size: 640px 640px;
+  transition: background-color var(--theme-fade) ease, color var(--theme-fade) ease;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-3);
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); }
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  padding: var(--space-2) var(--space-4);
+  background: var(--panel-solid);
+  color: var(--text);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+/* Script accent, only for the "Nos …" category words */
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: 1.25em;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* ---------- Layout ---------- */
+.wrap {
+  width: 100%;
+  max-width: calc(var(--measure) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Calm surface for text over the marble */
+.panel {
+  background-color: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: var(--space-5) var(--space-4);
+  transition: background-color var(--theme-fade) ease, color var(--theme-fade) ease;
+}
+
+/* Double gold rule, a quiet nod to the Art-Nouveau frames */
+.frame {
+  outline: 1px solid var(--rule);
+  outline-offset: 4px;
+}
+
+main > section {
+  margin-block: var(--space-6);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background-color: var(--panel);
+  border-bottom: 1px solid var(--rule);
+  transition: background-color var(--theme-fade) ease;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 64px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text);
+  text-decoration: none;
+  font-size: var(--step-1);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.lang-switch {
+  display: flex;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--step--1);
+}
+
+.lang-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  min-height: var(--tap);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.lang-switch a[aria-current="page"] {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---------- Status line ---------- */
+.status {
+  margin: 0;
+  padding: var(--space-2) 0;
+  font-size: var(--step--1);
+  text-align: center;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  text-align: center;
+}
+
+.hero-name {
+  margin-bottom: var(--space-2);
+}
+
+.hero .actions {
+  justify-content: center;
+}
+
+.hero-sub {
+  font-style: italic;
+  font-size: var(--step-1);
+  color: var(--text-muted);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  background-color: var(--gold);
+  color: var(--on-gold);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-quiet {
+  background-color: transparent;
+  color: var(--text);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: var(--space-7);
+  padding-block: var(--space-6);
+  background-color: var(--panel);
+  border-top: 1px solid var(--rule);
+  font-size: var(--step--1);
+  transition: background-color var(--theme-fade) ease;
+}
+
+.site-footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer li + li {
+  margin-top: var(--space-2);
+}
+
+/* ---------- Wider screens ---------- */
+@media (min-width: 48em) {
+  :root {
+    --gutter: 2rem;
+    --step-4: 4rem;
+    --step-2: 2rem;
+  }
+
+  .panel {
+    padding: var(--space-6);
+  }
+}
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
