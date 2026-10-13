@@ -29,15 +29,20 @@ function checkPriceField(entry, where, errors) {
       errors.push(`${where}: price must be integer cents or null`);
     }
   } else if ("prices" in entry) {
-    if (!isObject(entry.prices) || Object.keys(entry.prices).length === 0) {
-      errors.push(`${where}: prices must be an object like {"M": 890}`);
+    // Labelled sizes {"M": 890, "L": 1190} or unlabelled [350, 550] as written on the board.
+    const values = Array.isArray(entry.prices) ? entry.prices : isObject(entry.prices) ? entry.prices : null;
+    if (!values || Object.keys(values).length === 0) {
+      errors.push(`${where}: prices must be like {"M": 890} or [350, 550]`);
     } else {
-      for (const [size, value] of Object.entries(entry.prices)) {
+      for (const [size, value] of Object.entries(values)) {
         if (value !== null && !isPrice(value)) {
           errors.push(`${where}: prices.${size} must be integer cents or null`);
         }
       }
     }
+  } else if ("price_note" in entry) {
+    // Formule without a fixed price, e.g. "free drink".
+    if (!isName(entry.price_note)) errors.push(`${where}: price_note must be text or {fr, en, it}`);
   } else {
     errors.push(`${where}: missing price or prices`);
   }
@@ -92,10 +97,11 @@ export function validateMenu(menu) {
 // An entry is shown only when available and every price is known.
 export function hasAllPrices(entry) {
   if ("price" in entry) return isPrice(entry.price);
-  if (isObject(entry.prices)) {
+  if (Array.isArray(entry.prices) || isObject(entry.prices)) {
     const values = Object.values(entry.prices);
     return values.length > 0 && values.every(isPrice);
   }
+  if ("price_note" in entry) return isName(entry.price_note);
   return false;
 }
 

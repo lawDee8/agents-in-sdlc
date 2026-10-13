@@ -1,43 +1,754 @@
 {
-  "version": 1,
+  "version": 2,
+  "sources": "Transcribed 2026-10-13 from photos of the in-store screens, paper menu, chalkboard, lunch card and showcase label.",
   "formules": [
-    { "id": "petit-dejeuner", "name": { "fr": "Petit-déjeuner", "en": "Breakfast", "it": "Colazione" }, "description": null, "hours": null, "days": null, "price": null, "todo": "content, hours and price" },
-    { "id": "croissant-espresso", "name": { "fr": "Croissant + espresso", "en": "Croissant + espresso", "it": "Cornetto + espresso" }, "description": null, "hours": null, "days": null, "price": null, "todo": "hours and price" },
-    { "id": "dejeuner", "name": { "fr": "Déjeuner", "en": "Lunch", "it": "Pranzo" }, "description": null, "hours": null, "days": null, "price": null, "todo": "content, hours and price" }
+    {
+      "id": "caffe-croissant",
+      "name": {
+        "fr": "Caffè + croissant nature",
+        "en": "Coffee + plain croissant",
+        "it": "Caffè + cornetto semplice"
+      },
+      "description": null,
+      "hours": {
+        "from": "08:00",
+        "to": "10:00"
+      },
+      "days": null,
+      "price": 360
+    },
+    {
+      "id": "formule-midi",
+      "name": {
+        "fr": "Formule du midi",
+        "en": "Lunch deal",
+        "it": "Formula pranzo"
+      },
+      "description": {
+        "fr": "Focaccia ou salade + une boisson au choix au même prix : Coca-Cola, Coca-Cola Zéro, Lemon Soda, Orange Soda, Ice Tea Pêche, eau plate ou gazeuse.",
+        "en": "Focaccia or salad + a drink of your choice at the same price: Coca-Cola, Coca-Cola Zero, Lemon Soda, Orange Soda, peach iced tea, still or sparkling water.",
+        "it": "Focaccia o insalata + una bibita a scelta allo stesso prezzo: Coca-Cola, Coca-Cola Zero, Lemon Soda, Orange Soda, tè freddo alla pesca, acqua naturale o frizzante."
+      },
+      "hours": {
+        "from": "12:00",
+        "to": "14:30"
+      },
+      "days": null,
+      "price_note": {
+        "fr": "Boisson offerte",
+        "en": "Free drink",
+        "it": "Bibita offerta"
+      }
+    }
   ],
   "categories": [
     {
       "id": "focaccias",
-      "name": { "fr": "Focaccias", "en": "Focaccias", "it": "Focacce" },
+      "name": {
+        "fr": "Focaccias",
+        "en": "Focaccias",
+        "it": "Focacce"
+      },
       "layout": "cards",
       "items": [
-        { "id": "pistacchio", "name": "Pistacchio", "ingredients": null, "prices": { "M": null, "L": null }, "tags": [], "photo": false, "available": true, "todo": "ingredients and M/L prices" }
+        {
+          "id": "pistacchio",
+          "name": "Pistacchio",
+          "ingredients": [
+            "Mortadelle La Favola",
+            "Crème de pistache",
+            "Stracciatella"
+          ],
+          "prices": {
+            "M": 1250,
+            "L": 1550
+          },
+          "tags": [],
+          "photo": false,
+          "available": true
+        },
+        {
+          "id": "gorgonzola",
+          "name": "Gorgonzola",
+          "ingredients": [
+            "Speck Senfter",
+            "Gorgonzola Igor",
+            "Crème de noix",
+            "Roquette"
+          ],
+          "prices": {
+            "M": 890,
+            "L": 1190
+          },
+          "tags": [],
+          "photo": false,
+          "available": true
+        },
+        {
+          "id": "fume",
+          "name": "Fume",
+          "ingredients": [
+            "Jambon cuit Prada",
+            "Provola fumée",
+            "Tomate",
+            "Salade"
+          ],
+          "prices": {
+            "M": 850,
+            "L": 1150
+          },
+          "tags": [],
+          "photo": false,
+          "available": true
+        },
+        {
+          "id": "cremona",
+          "name": "Cremona",
+          "ingredients": [
+            "Jambon cru de Parme",
+            "Crème de fromage",
+            "Tomate",
+            "Roquette"
+          ],
+          "prices": {
+            "M": 1050,
+            "L": 1350
+          },
+          "tags": [],
+          "photo": false,
+          "available": true
+        },
+        {
+          "id": "chicken-caesar",
+          "name": "Chicken Caesar",
+          "ingredients": [
+            "Crème de fromage",
+            "Tomate",
+            "Salade",
+            "Jambon de poulet",
+            "Sauce Caesar"
+          ],
+          "prices": {
+            "M": 890,
+            "L": 1190
+          },
+          "tags": [
+            "poulet"
+          ],
+          "photo": false,
+          "available": true
+        },
+        {
+          "id": "stoccolma",
+          "name": "Stoccolma",
+          "ingredients": [
+            "Fromage stracchino",
+            "Roquette",
+            "Saumon fumé"
+          ],
+          "prices": {
+            "M": 1190,
+            "L": 1490
+          },
+          "tags": [
+            "poisson"
+          ],
+          "photo": false,
+          "available": true
+        },
+        {
+          "id": "caprese",
+          "name": "Caprese",
+          "ingredients": [
+            "Crème de ricotta et basilic",
+            "Tomate",
+            "Huile d'olive",
+            "Salade",
+            "Mozzarella"
+          ],
+          "prices": {
+            "M": 1090,
+            "L": 1390
+          },
+          "tags": [
+            "vegetarien"
+          ],
+          "photo": false,
+          "available": true
+        },
+        {
+          "id": "legumes-du-jour",
+          "name": "Légumes du jour",
+          "ingredients": [
+            "Mozzarella",
+            "Légumes du jour",
+            "Crème de ricotta et basilic",
+            "Tomate",
+            "Oignons caramélisés"
+          ],
+          "prices": {
+            "M": 1050,
+            "L": 1350
+          },
+          "tags": [],
+          "photo": false,
+          "available": true
+        }
       ]
     },
-    { "id": "salades", "name": { "fr": "Salades", "en": "Salads", "it": "Insalate" }, "layout": "cards", "items": [] },
-    { "id": "viennoiseries", "name": { "fr": "Viennoiseries", "en": "Pastries", "it": "Viennoiserie" }, "layout": "list", "items": [] },
     {
-      "id": "desserts",
-      "name": { "fr": "Desserts", "en": "Desserts", "it": "Dolci" },
+      "id": "salades",
+      "name": {
+        "fr": "Salades",
+        "en": "Salads",
+        "it": "Insalate"
+      },
+      "layout": "cards",
+      "items": [
+        {
+          "id": "salade-cesar",
+          "name": "Salade César",
+          "ingredients": [
+            "Salade romaine",
+            "Tomates fraîches",
+            "Poulet fumé",
+            "Parmesan",
+            "Croûtons",
+            "Sauce César"
+          ],
+          "price": 1190,
+          "tags": [
+            "poulet"
+          ],
+          "photo": false,
+          "available": true
+        },
+        {
+          "id": "salade-stoccolma",
+          "name": "Stoccolma",
+          "ingredients": [
+            "Épinards frais",
+            "Roquette",
+            "Saumon fumé",
+            "Avocat",
+            "Fromage de chèvre frais"
+          ],
+          "price": 1190,
+          "tags": [
+            "poisson"
+          ],
+          "photo": false,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "viennoiseries",
+      "name": {
+        "fr": "Viennoiseries",
+        "en": "Pastries",
+        "it": "Viennoiserie"
+      },
       "layout": "list",
       "items": [
-        { "id": "granita", "name": "Granita", "price": null, "tags": [], "available": true, "todo": "price (and flavours?)" },
-        { "id": "tiramisu", "name": "Tiramisu fait maison", "price": null, "tags": [], "available": true, "todo": "price" }
+        {
+          "id": "croissant-nature",
+          "name": "Croissant nature",
+          "price": 190,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "croissant-farcie",
+          "name": "Croissant farcie",
+          "description": {
+            "fr": "Abricot, crème, chocolat, framboises",
+            "en": "Apricot, custard, chocolate, raspberry",
+            "it": "Albicocca, crema, cioccolato, lampone"
+          },
+          "price": 250,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "boule-chocolat",
+          "name": "Boule chocolat",
+          "price": 250,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "boule-creme",
+          "name": "Boule crème",
+          "price": 330,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "tresse-pecan",
+          "name": "Tresse pécan",
+          "price": 330,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "tresse-noisette",
+          "name": "Tresse noisette",
+          "price": 330,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "chausson-creme",
+          "name": "Chausson crème",
+          "price": 330,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "chausson-noisette",
+          "name": "Chausson noisette",
+          "price": 330,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "mascarpone-pistache",
+          "name": "Mascarpone pistache",
+          "price": 330,
+          "tags": [],
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "name": {
+        "fr": "Desserts",
+        "en": "Desserts",
+        "it": "Dolci"
+      },
+      "layout": "list",
+      "items": [
+        {
+          "id": "granita",
+          "name": "Granita",
+          "description": {
+            "fr": "Pistache, amande & café",
+            "en": "Pistachio, almond & coffee",
+            "it": "Pistacchio, mandorla e caffè"
+          },
+          "prices": [
+            350,
+            550
+          ],
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "granita-brioche",
+          "name": "Granita avec brioche",
+          "price": 740,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "tiramisu",
+          "name": "Tiramisu fait maison",
+          "price": 600,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "crostata-abricot",
+          "name": "Crostata abricot",
+          "price": 260,
+          "tags": [],
+          "available": true
+        }
       ]
     },
     {
       "id": "cafes",
-      "name": { "fr": "Cafés", "en": "Coffee", "it": "Caffè" },
+      "name": {
+        "fr": "Cafés",
+        "en": "Coffee",
+        "it": "Caffè"
+      },
       "layout": "list",
-      "items": [],
+      "items": [
+        {
+          "id": "espresso",
+          "name": "Espresso",
+          "price": 190,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "ristretto",
+          "name": "Ristretto",
+          "price": 190,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "cafe-noisette",
+          "name": "Café noisette",
+          "price": 250,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "double-espresso",
+          "name": "Double espresso",
+          "price": 380,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "americano",
+          "name": "Americano",
+          "price": 290,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "cafe-au-lait",
+          "name": "Café au lait",
+          "price": null,
+          "tags": [],
+          "available": true,
+          "todo": "Price differs: paper menu 3,50 EUR, screen 3,60 EUR. Owners: confirm."
+        },
+        {
+          "id": "cappuccino",
+          "name": "Cappuccino",
+          "prices": {
+            "S": 350,
+            "M": 390,
+            "L": 490
+          },
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "cafe-latte",
+          "name": "Café latte",
+          "prices": {
+            "S": 350,
+            "M": 390,
+            "L": 490
+          },
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "flat-white",
+          "name": "Flat white",
+          "price": 390,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "chococcino",
+          "name": "Chococcino",
+          "price": 490,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "chocolat-chaud",
+          "name": "Chocolat chaud",
+          "price": 390,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "matcha-latte",
+          "name": "Matcha latté",
+          "price": 550,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "ice-latte",
+          "name": "Ice latte",
+          "price": 490,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "the",
+          "name": "Thé",
+          "price": 390,
+          "tags": [],
+          "available": true
+        }
+      ],
       "extras": [
-        { "id": "lait-vegetal", "name": { "fr": "Lait végétal", "en": "Plant milk", "it": "Latte vegetale" }, "price": 100 },
-        { "id": "decafeine", "name": { "fr": "Décaféiné", "en": "Decaf", "it": "Decaffeinato" }, "price": 100 },
-        { "id": "sirop", "name": { "fr": "Sirop", "en": "Syrup", "it": "Sciroppo" }, "price": 50 }
+        {
+          "id": "lait-vegetal",
+          "name": {
+            "fr": "Lait végétal",
+            "en": "Plant milk",
+            "it": "Latte vegetale"
+          },
+          "price": 100
+        },
+        {
+          "id": "decafeine",
+          "name": {
+            "fr": "Décaféiné",
+            "en": "Decaf",
+            "it": "Decaffeinato"
+          },
+          "price": 100
+        },
+        {
+          "id": "sirop",
+          "name": {
+            "fr": "Sirop",
+            "en": "Syrup",
+            "it": "Sciroppo"
+          },
+          "price": 50
+        }
       ]
     },
-    { "id": "softs-italiens", "name": { "fr": "Softs italiens", "en": "Italian soft drinks", "it": "Bibite italiane" }, "layout": "list", "items": [] },
-    { "id": "softs", "name": { "fr": "Softs", "en": "Soft drinks", "it": "Bibite" }, "layout": "list", "items": [] },
-    { "id": "aperitif", "name": { "fr": "Apéritif et vins", "en": "Aperitivo and wine", "it": "Aperitivo e vini" }, "layout": "list", "legal_notice": true, "items": [] }
+    {
+      "id": "softs-italiens",
+      "name": {
+        "fr": "Softs italiens",
+        "en": "Italian soft drinks",
+        "it": "Bibite italiane"
+      },
+      "layout": "list",
+      "items": [
+        {
+          "id": "cedrata-soda",
+          "name": "Cedrata soda",
+          "description": {
+            "fr": "Boisson pétillante au cédrat",
+            "en": "Sparkling citron drink",
+            "it": "Bibita frizzante al cedro"
+          },
+          "price": 450,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "limonata",
+          "name": "Limonata",
+          "description": {
+            "fr": "Citron de Sicile",
+            "en": "Sicilian lemon",
+            "it": "Limone di Sicilia"
+          },
+          "price": 450,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "aranciata-amara",
+          "name": "Aranciata amara",
+          "description": {
+            "fr": "Orange amère de Méditerranée",
+            "en": "Mediterranean bitter orange",
+            "it": "Arancia amara del Mediterraneo"
+          },
+          "price": 450,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "aranciata-rossa",
+          "name": "Aranciata rossa",
+          "description": {
+            "fr": "Orange rouge de Sicile",
+            "en": "Sicilian blood orange",
+            "it": "Arancia rossa di Sicilia"
+          },
+          "price": 450,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "chinotto",
+          "name": "Chinotto",
+          "description": {
+            "fr": "Agrumes et herbes",
+            "en": "Citrus and herbs",
+            "it": "Agrumi ed erbe"
+          },
+          "price": 450,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "sanbitter",
+          "name": "Sanbitter",
+          "description": {
+            "fr": "Fruité et rafraîchissant",
+            "en": "Fruity and refreshing",
+            "it": "Fruttato e rinfrescante"
+          },
+          "price": 290,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "crodino",
+          "name": "Crodino",
+          "description": {
+            "fr": "Herbacé et agrumes",
+            "en": "Herbal and citrus",
+            "it": "Erbaceo e agrumato"
+          },
+          "price": 290,
+          "tags": [],
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "softs",
+      "name": {
+        "fr": "Softs",
+        "en": "Soft drinks",
+        "it": "Bibite"
+      },
+      "layout": "list",
+      "items": [
+        {
+          "id": "fever-tree",
+          "name": "Fever-Tree tonic water",
+          "description": {
+            "fr": "Tonic premium",
+            "en": "Premium tonic",
+            "it": "Tonica premium"
+          },
+          "price": 450,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "coca-cola",
+          "name": "Coca-Cola",
+          "price": 290,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "coca-cola-zero",
+          "name": "Coca-Cola Zéro",
+          "price": 290,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "lemon-soda",
+          "name": "Lemon Soda",
+          "price": 290,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "orange-soda",
+          "name": "Orange Soda",
+          "price": 290,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "ice-tea-peche",
+          "name": "Ice Tea Pêche",
+          "price": 290,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "eau-plate",
+          "name": "Eau plate",
+          "price": 290,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "eau-gazeuse",
+          "name": "Eau gazeuse",
+          "price": 290,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "jus-fruits",
+          "name": "Jus de fruits en bouteille",
+          "price": 350,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "jus-orange",
+          "name": "Jus d'orange pressé",
+          "price": 550,
+          "tags": [],
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "aperitif",
+      "name": {
+        "fr": "Apéritif et vins",
+        "en": "Aperitivo and wine",
+        "it": "Aperitivo e vini"
+      },
+      "layout": "list",
+      "legal_notice": true,
+      "items": [
+        {
+          "id": "biere",
+          "name": "Bière",
+          "price": 500,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "prosecco",
+          "name": "Prosecco (verre)",
+          "price": 600,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "vin-rouge",
+          "name": "Vin rouge (verre)",
+          "price": 600,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "vin-rose",
+          "name": "Vin rosé (verre)",
+          "price": 600,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "vin-blanc",
+          "name": "Vin blanc (verre)",
+          "price": 600,
+          "tags": [],
+          "available": true
+        },
+        {
+          "id": "bellini",
+          "name": "Bellini (verre)",
+          "price": 650,
+          "tags": [],
+          "available": true
+        }
+      ]
+    }
   ]
 }

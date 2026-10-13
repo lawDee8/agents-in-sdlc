@@ -63,3 +63,21 @@ test("prices format per language", () => {
   assert.equal(nb(formatPrice(1190, "fr")), "11,90 €");
   assert.equal(formatPrice(1190, "en"), "€11.90");
 });
+
+test("unlabelled prices and price notes", () => {
+  const menu = {
+    formules: [{ id: "midi", name: { fr: "Midi" }, price_note: { fr: "Boisson offerte" } }],
+    categories: [{ id: "d", name: { fr: "Desserts" }, items: [
+      { id: "granita", name: "Granita", prices: [350, 550] },
+      { id: "half", name: "Half", prices: [350, null] },
+    ] }],
+  };
+  assert.deepEqual(validateMenu(menu), { ok: true, errors: [] });
+  assert.equal(isVisible(menu.formules[0]), true);
+  assert.equal(isVisible(menu.categories[0].items[0]), true);
+  assert.equal(isVisible(menu.categories[0].items[1]), false);
+  const bad = { categories: [{ id: "d", name: { fr: "D" }, items: [{ id: "x", name: "X", prices: ["3,50"] }] }] };
+  assert.equal(validateMenu(bad).ok, false);
+  const noNote = { formules: [{ id: "f", name: { fr: "F" }, price_note: "" }], categories: menu.categories };
+  assert.equal(validateMenu(noNote).ok, false);
+});

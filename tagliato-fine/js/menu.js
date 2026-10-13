@@ -14,9 +14,13 @@ export function el(tag, className, text) {
 
 function priceText(entry, lang) {
   if ("price" in entry) return formatPrice(entry.price, lang);
-  return Object.entries(entry.prices)
-    .map(([size, cents]) => `${size} ${formatPrice(cents, lang)}`)
-    .join(" · ");
+  if (Array.isArray(entry.prices)) return entry.prices.map((c) => formatPrice(c, lang)).join(" / ");
+  if (entry.prices) {
+    return Object.entries(entry.prices)
+      .map(([size, cents]) => `${size} ${formatPrice(cents, lang)}`)
+      .join(" · ");
+  }
+  return pick(entry.price_note, lang);
 }
 
 function tagBadges(item, t) {
@@ -79,7 +83,7 @@ export function formuleNotOver(f, minutes) {
 export function renderFormules(list, formules, lang) {
   list.replaceChildren();
   for (const f of formules) {
-    const li = row(pick(f.name, lang), formatPrice(f.price, lang));
+    const li = row(pick(f.name, lang), priceText(f, lang));
     const desc = [formuleHours(f), pick(f.description, lang)].filter(Boolean).join(" · ");
     if (desc) li.append(el("span", "row-desc", desc));
     list.append(li);
@@ -111,7 +115,7 @@ export function renderMenu(root, nav, menu, lang, t, prefix) {
     const h = el("h2");
     h.id = `${id}-titre`;
     if (t.menu_nos) h.append(el("span", "script", t.menu_nos), " ");
-    h.append(name);
+    h.append(el("span", "heading-name", name));
     return h;
   };
 
@@ -146,6 +150,8 @@ export function renderMenu(root, nav, menu, lang, t, prefix) {
         const list = el("ul", "rows");
         for (const item of items) {
           const li = row(item.name, priceText(item, lang));
+          const desc = pick(item.description, lang);
+          if (desc) li.append(el("span", "row-desc", desc));
           const badges = tagBadges(item, t);
           if (badges) li.append(badges);
           list.append(li);

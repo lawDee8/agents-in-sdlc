@@ -27,6 +27,7 @@ Ce dont vous avez besoin :
 
    - `name` : le nom affiché, tel quel dans les trois langues.
    - `prices` : M et L. Un seul prix ? Écrivez `"price": 650` à la place.
+   - Deux prix sans taille, comme la granita : `"prices": [350, 550]` (affiché « 3,50 € / 5,50 € »).
    - `tags` : `"vegetarien"`, `"poisson"` ou `"poulet"`, par exemple `["vegetarien"]`.
    - `id` : un mot unique, sans accent ni espace. Ne le changez plus ensuite.
 4. Pour ajouter un produit, copiez un produit existant et changez l'`id`. Séparez les produits par une **virgule**, sauf après le dernier.

@@ -485,6 +485,12 @@ address .line {
   scroll-margin-top: 60px;
 }
 
+/* Category names in capitals, as on the in-store screens ("Nos SALADES") */
+.heading-name {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 .cards {
   display: grid;
   gap: var(--space-5);

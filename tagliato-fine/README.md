@@ -24,6 +24,8 @@ Opening the files directly (`file://`) does not work: browsers block `fetch` of 
 
 Rules the code relies on:
 - Prices are integer cents. An item with any `null` price, or `available: false`, is hidden (and listed in the console).
+- Price formats: `"price": 650`, labelled sizes `"prices": {"M": 890, "L": 1190}`, unlabelled as on the board `"prices": [350, 550]` (shown "3,50 € / 5,50 €"), or for a formule without a fixed price `"price_note": {"fr": "Boisson offerte", …}`.
+- `description` ({fr, en, it}) shows under list rows; `ingredients` (array) on cards.
 - `hours` with a `todo` key = unconfirmed: no badge, no hours table, light theme. Same for `address` with a `todo`.
 - `special_hours` override the weekday: `ranges: [...]` or `"closed"`.
 - A formule with `days: ["monday", …]` shows on those days only; `hours: {from, to}` hides it on the home page once over.
