@@ -77,6 +77,21 @@ Vérifiez sur jsonlint.com, puis envoyez dans `data/` comme au point 4.
 5. Envoyez-le dans `img/produits/` avec FileZilla.
 6. Dans `menu.json`, mettez `"photo": true` sur ce produit, vérifiez, envoyez.
 
+## 8. Imprimer les cartes de table avec QR code
+
+Les fichiers sont dans le dossier `qr/` :
+- `cartes-table-A4-clair.pdf` : fond crème, économise l'encre. **À imprimer soi-même.**
+- `cartes-table-A4-sombre.pdf` : fond noir et or, comme les écrans. **Plutôt chez un imprimeur** (papier couché ou satiné 300–350 g/m²), ou à plastifier : un grand aplat noir sur papier ordinaire peut baver ou gondoler.
+- `qr-code.svg` et `qr-code.png` : le QR code seul, noir sur blanc, pour un autre support (vitrine, flyer). Ne pas le réduire sous 2 cm.
+
+Pour imprimer :
+1. Ouvrez le PDF, Imprimer, choisissez **Taille réelle / 100 %** (jamais « Ajuster à la page »).
+2. Papier cartonné 250–300 g/m² seulement si votre imprimante l'accepte (voir sa notice) ; sinon, une boutique de reprographie.
+3. **Avant d'imprimer tout le lot :** imprimez une feuille, scannez une carte avec un iPhone et un Android. La page doit s'ouvrir.
+4. Coupez sur les petits traits au bord de la feuille. Si un trait n'est pas imprimé : la coupe est à **5 mm à l'extérieur du cadre doré**. Chaque carte mesure 95 × 138 mm (rentre dans un porte-menu A6).
+
+L'adresse cachée dans le QR code est écrite dans `qr/URL.txt`. Une carte imprimée ne peut plus changer d'adresse : si l'adresse du site change, il faut regénérer et réimprimer.
+
 ## En cas de problème
 
 Remettez votre copie de sauvegarde (règle d'or n° 1) et appelez le développeur.

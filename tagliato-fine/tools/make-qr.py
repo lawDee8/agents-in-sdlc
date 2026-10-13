@@ -40,9 +40,9 @@ ERROR_LEVEL = "h"           # 30 % damage tolerance: coffee stains, scratches
 GOLD = HexColor("#C9A44C")
 THEMES = {
     "clair": {"bg": HexColor("#F7F3EC"), "text": HexColor("#2B2418"), "muted": HexColor("#5C5243"),
-              "accent": HexColor("#7A5E1F"), "panel": HexColor("#FFFFFF"), "ink": HexColor("#000000")},
+              "accent": HexColor("#7A5E1F"), "panel": HexColor("#FFFFFF")},
     "sombre": {"bg": HexColor("#0F0E0D"), "text": HexColor("#EFE6CF"), "muted": HexColor("#B5AC98"),
-               "accent": HexColor("#E6CF8A"), "panel": HexColor("#FFFFFF"), "ink": HexColor("#000000")},
+               "accent": HexColor("#E6CF8A"), "panel": HexColor("#FFFFFF")},
 }
 
 
@@ -67,6 +67,8 @@ def draw_qr(c, qr, x, y, size, color):
     matrix = [list(row) for row in qr.matrix]
     n = len(matrix)
     m = size / n
+    # RGB #000000 on purpose: office/home printers and viewers render it as pure black.
+    # CMYK K-only rendered as dark grey (35,31,32) and scanned worse in tests.
     c.setFillColor(color)
     for r, row in enumerate(matrix):
         col = 0
@@ -82,10 +84,7 @@ def draw_qr(c, qr, x, y, size, color):
 
 
 def draw_card(c, qr, x, y, t):
-    """Card trim box at (x, y), bleed drawn around it."""
-    c.setFillColor(t["bg"])
-    c.rect(x - BLEED, y - BLEED, CARD_W + 2 * BLEED, CARD_H + 2 * BLEED, stroke=0, fill=1)
-
+    """Card artwork inside the trim box at (x, y)."""
     # Double gold frame, a nod to the Art-Nouveau frames of the screens.
     c.setStrokeColor(GOLD)
     c.setLineWidth(0.8)
@@ -106,7 +105,7 @@ def draw_card(c, qr, x, y, t):
     c.rect(cx - box / 2 + 1.1 * mm, by + 1.1 * mm, box - 2.2 * mm, box - 2.2 * mm, stroke=1, fill=0)
     c.setFillColor(HexColor("#E6CF8A"))
     c.setFont("Cormorant-SemiBold", 17)
-    c.drawCentredString(cx, by + 4.1 * mm, "TF")
+    c.drawCentredString(cx, by + 4.5 * mm, "TF")
 
     c.setFillColor(t["text"])
     c.setFont("Cormorant-SemiBold", 24)
@@ -121,7 +120,7 @@ def draw_card(c, qr, x, y, t):
     c.setStrokeColor(GOLD)
     c.setLineWidth(0.6)
     c.rect(cx - PANEL / 2, py, PANEL, PANEL, stroke=1, fill=1)
-    draw_qr(c, qr, cx - QR_SIZE / 2, py + (PANEL - QR_SIZE) / 2, QR_SIZE, t["ink"])
+    draw_qr(c, qr, cx - QR_SIZE / 2, py + (PANEL - QR_SIZE) / 2, QR_SIZE, HexColor("#000000"))
 
     # Call to action: script accent + FR, then EN / IT.
     ty = py - 9 * mm
@@ -138,12 +137,16 @@ def draw_card(c, qr, x, y, t):
     c.setFont("Cormorant-Medium", 14)
     c.drawString(start + sw + space, ty, rest)
     c.setFillColor(t["muted"])
-    c.setFont("Cormorant-Italic", 10.5)
-    c.drawCentredString(cx, ty - 6.5 * mm, "Scan for the menu · Inquadra per il menu")
+    c.setFont("Cormorant-Italic", 12)
+    c.drawCentredString(cx, ty - 7.5 * mm, "Scan for the menu · Inquadra per il menu")
 
 
 def crop_marks(c, xs, ys):
-    """Trim marks in the page margins, aligned to every trim line."""
+    """Trim marks in the page margins, aligned to every trim line.
+
+    They run from 0.5 mm to 1 mm short of the bleed (7 mm), so 3 mm or more
+    survives the 4-5 mm unprintable margin of office printers.
+    """
     pw, ph = A4
     c.setStrokeColor(HexColor("#000000"))
     c.setLineWidth(0.25)
@@ -157,21 +160,22 @@ def crop_marks(c, xs, ys):
 
 def make_pdf(qr, url, theme, path):
     pw, ph = A4
-    gap = 2 * BLEED
-    total_w = 2 * CARD_W + gap
-    total_h = 2 * CARD_H + gap
-    x0 = (pw - total_w) / 2
-    y0 = (ph - total_h) / 2
-    c = canvas.Canvas(str(path), pagesize=A4)
+    t = THEMES[theme]
+    # Neighbouring cards share a background, so they share a cut line: no inner bleed.
+    x0 = (pw - 2 * CARD_W) / 2
+    y0 = (ph - 2 * CARD_H) / 2
+    c = canvas.Canvas(str(path), pagesize=A4, initialFontName="Cormorant-Medium")
     c.setTitle("Tagliato Fine — cartes de table QR")
     c.setAuthor("Tagliato Fine")
     c.setSubject(f"QR: {url} — imprimer à 100 % (taille réelle), couper sur les traits")
+    # Ask PDF viewers not to shrink the sheet to the printable area.
+    c.setViewerPreference("PrintScaling", "None")
+    c.setFillColor(t["bg"])
+    c.rect(x0 - BLEED, y0 - BLEED, 2 * CARD_W + 2 * BLEED, 2 * CARD_H + 2 * BLEED, stroke=0, fill=1)
     for col in range(2):
         for row in range(2):
-            draw_card(c, qr, x0 + col * (CARD_W + gap), y0 + row * (CARD_H + gap), THEMES[theme])
-    xs = [x0, x0 + CARD_W, x0 + CARD_W + gap, x0 + 2 * CARD_W + gap]
-    ys = [y0, y0 + CARD_H, y0 + CARD_H + gap, y0 + 2 * CARD_H + gap]
-    crop_marks(c, xs, ys)
+            draw_card(c, qr, x0 + col * CARD_W, y0 + row * CARD_H, t)
+    crop_marks(c, [x0 + i * CARD_W for i in range(3)], [y0 + i * CARD_H for i in range(3)])
     c.showPage()
     c.save()
 
