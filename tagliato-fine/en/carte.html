@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
+  <title>Menu · Tagliato Fine, Cannes</title>
+  <meta name="description" content="Tagliato Fine menu in Cannes: focaccias, salads, desserts, coffee, Italian drinks and aperitivo.">
+  <link rel="alternate" hreflang="fr" href="/carte.html">
+  <link rel="alternate" hreflang="en" href="/en/carte.html">
+  <link rel="alternate" hreflang="it" href="/it/carte.html">
+  <link rel="alternate" hreflang="x-default" href="/carte.html">
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preload" href="../fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="module" src="../js/main.js"></script>
+</head>
+<body data-page="menu" data-prefix="../">
+  <a class="skip-link" href="#contenu">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="logo" href="./">
+        <img src="../img/logo.svg" alt="" width="40" height="40">
+        <span>Tagliato Fine</span>
+      </a>
+      <div class="header-tools">
+        <nav aria-label="Language">
+          <ul class="lang-switch">
+            <li><a href="../carte.html" lang="fr" hreflang="fr">FR</a></li>
+            <li><a href="../en/carte.html" lang="en" aria-current="page">EN</a></li>
+            <li><a href="../it/carte.html" lang="it" hreflang="it">IT</a></li>
+          </ul>
+        </nav>
+        <button class="theme-toggle" type="button" id="theme-toggle" hidden>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/><circle cx="12" cy="12" r="4.5"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="wrap main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="carte.html" aria-current="page">See the menu</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <p class="status wrap" id="status" aria-live="polite" hidden></p>
+  </header>
+  <main id="contenu">
+    <h1 class="wrap page-title">Menu</h1>
+    <nav class="menu-nav" id="menu-nav" aria-label="Categories" hidden>
+      <ul class="wrap" id="menu-nav-list"></ul>
+    </nav>
+    <noscript><p class="wrap"><span class="panel noscript">To see the menu and opening hours, please enable JavaScript.</span></p></noscript>
+    <div class="wrap menu-root" id="menu-root"></div>
+    <p class="wrap allergens" id="allergens" hidden>Allergen information is available at the counter.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p id="footer-hours"></p>
+      <p id="footer-instagram" hidden></p>
+      <ul>
+        <li><a href="carte.html">Menu</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mentions-legales.html">Legal notice</a></li>
+        <li><a href="confidentialite.html">Privacy</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

@@ -13,12 +13,13 @@
   <link rel="icon" href="img/logo.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/main.js"></script>
 </head>
-<body>
+<body data-page="home" data-prefix="">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
 
   <header class="site-header">
-    <div class="wrap">
+    <div class="wrap header-row">
       <a class="logo" href="./">
         <img src="img/logo.svg" alt="" width="40" height="40">
         <span>Tagliato Fine</span>
@@ -31,53 +32,51 @@
             <li><a href="it/" lang="it" hreflang="it">IT</a></li>
           </ul>
         </nav>
-        <!-- Shown by js/hours.js; useless without JS, so hidden by default. -->
-        <button class="theme-toggle" type="button" id="theme-toggle" aria-pressed="false" hidden>
-          <span class="visually-hidden">Thème clair ou sombre</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="12" r="4.5"/>
-            <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/>
-          </svg>
+        <button class="theme-toggle" type="button" id="theme-toggle" hidden>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/><circle cx="12" cy="12" r="4.5"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
         </button>
       </div>
     </div>
-    <!-- Filled by js/hours.js from data/infos.json. Empty and hidden without JS or with unresolved hours. -->
+    <nav class="wrap main-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="carte.html">Voir la carte</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
     <p class="status wrap" id="status" aria-live="polite" hidden></p>
   </header>
-
   <main id="contenu">
+    <noscript><p class="wrap"><span class="panel noscript">Pour voir la carte et les horaires, activez JavaScript.</span></p></noscript>
     <section class="wrap" aria-labelledby="hero-title">
       <div class="panel frame hero">
-        <!-- Hero photo goes here once the owners supply one (img/hero/, WebP, width/height set). -->
         <h1 class="hero-name" id="hero-title">Tagliato Fine</h1>
         <p class="hero-sub">Charcuterie · Pizzicheria</p>
+        <p>Focaccias, salades, granita sicilienne et café italien, à Cannes.</p>
         <p class="actions"><a class="btn" href="carte.html">Voir la carte</a></p>
       </div>
     </section>
 
-    <!-- Formules active today: rendered by js/menu.js from data/menu.json. -->
     <section class="wrap" id="formules" aria-labelledby="formules-title" hidden>
       <div class="panel">
-        <h2 id="formules-title"><span class="script">Nos</span> formules</h2>
-        <div id="formules-list"></div>
+        <h2 id="formules-title"><span class="script">Nos</span> formules du jour</h2>
+        <ul class="rows" id="formules-list"></ul>
       </div>
     </section>
 
-    <!-- Signature items (pistacchio, granita, tiramisu) by id from data/menu.json. -->
     <section class="wrap" id="signatures" aria-labelledby="signatures-title" hidden>
       <div class="panel">
         <h2 id="signatures-title"><span class="script">Nos</span> incontournables</h2>
-        <div id="signatures-list"></div>
+        <ul class="cards" id="signatures-list"></ul>
       </div>
     </section>
 
-    <section class="wrap" id="acces" aria-labelledby="acces-title">
+    <section class="wrap" aria-labelledby="acces-title">
       <div class="panel">
         <h2 id="acces-title">Nous trouver</h2>
-        <!-- Address, landmark, directions and tel: link come from data/infos.json (not yet supplied). -->
         <address id="address"></address>
         <p class="actions" id="contact-actions">
-          <a class="btn-quiet btn" href="contact.html">Adresse et horaires</a>
+          <a class="btn btn-quiet" href="contact.html">Adresse et horaires</a>
         </p>
       </div>
     </section>
@@ -85,8 +84,8 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <!-- Hours summary and Instagram link from data/infos.json. -->
       <p id="footer-hours"></p>
+      <p id="footer-instagram" hidden></p>
       <ul>
         <li><a href="carte.html">La carte</a></li>
         <li><a href="contact.html">Contact</a></li>

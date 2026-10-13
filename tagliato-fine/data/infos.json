@@ -1,0 +1,46 @@
+{
+  "name": "Tagliato Fine",
+  "timezone": "Europe/Paris",
+  "address": {
+    "street": null,
+    "postal_code": null,
+    "city": "Cannes",
+    "country": "FR",
+    "landmark": {
+      "fr": "Face au restaurant Pitaya",
+      "en": "Opposite Pitaya restaurant",
+      "it": "Di fronte al ristorante Pitaya"
+    },
+    "todo": "Owners: fill street and postal_code, then delete this todo line."
+  },
+  "phone": null,
+  "whatsapp": null,
+  "instagram": null,
+  "hours": {
+    "todo": "Owners: confirm or correct these hours, then delete this todo line. Until then the site shows no hours and no Open badge.",
+    "monday": [{ "from": "08:00", "to": "22:00" }],
+    "tuesday": [{ "from": "08:00", "to": "22:00" }],
+    "wednesday": [{ "from": "08:00", "to": "22:00" }],
+    "thursday": [{ "from": "08:00", "to": "22:00" }],
+    "friday": [{ "from": "08:00", "to": "22:00" }],
+    "saturday": [{ "from": "08:00", "to": "22:00" }],
+    "sunday": [{ "from": "08:00", "to": "22:00" }]
+  },
+  "special_hours": [],
+  "legal": {
+    "company_name": null,
+    "legal_form": null,
+    "share_capital": null,
+    "address": null,
+    "siret": null,
+    "rcs": null,
+    "vat_number": null,
+    "publication_director": null,
+    "email": null,
+    "phone": null,
+    "host_name": "alwaysdata",
+    "host_address": null,
+    "host_phone": null,
+    "todo": "Owners: fill every null field (Kbis extract). The legal pages show [À COMPLÉTER] until then."
+  }
+}

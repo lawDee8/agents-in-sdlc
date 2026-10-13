@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "formules": [
+    { "id": "petit-dejeuner", "name": { "fr": "Petit-déjeuner", "en": "Breakfast", "it": "Colazione" }, "description": null, "hours": null, "days": null, "price": null, "todo": "content, hours and price" },
+    { "id": "croissant-espresso", "name": { "fr": "Croissant + espresso", "en": "Croissant + espresso", "it": "Cornetto + espresso" }, "description": null, "hours": null, "days": null, "price": null, "todo": "hours and price" },
+    { "id": "dejeuner", "name": { "fr": "Déjeuner", "en": "Lunch", "it": "Pranzo" }, "description": null, "hours": null, "days": null, "price": null, "todo": "content, hours and price" }
+  ],
+  "categories": [
+    {
+      "id": "focaccias",
+      "name": { "fr": "Focaccias", "en": "Focaccias", "it": "Focacce" },
+      "layout": "cards",
+      "items": [
+        { "id": "pistacchio", "name": "Pistacchio", "ingredients": null, "prices": { "M": null, "L": null }, "tags": [], "photo": false, "available": true, "todo": "ingredients and M/L prices" }
+      ]
+    },
+    { "id": "salades", "name": { "fr": "Salades", "en": "Salads", "it": "Insalate" }, "layout": "cards", "items": [] },
+    { "id": "viennoiseries", "name": { "fr": "Viennoiseries", "en": "Pastries", "it": "Viennoiserie" }, "layout": "list", "items": [] },
+    {
+      "id": "desserts",
+      "name": { "fr": "Desserts", "en": "Desserts", "it": "Dolci" },
+      "layout": "list",
+      "items": [
+        { "id": "granita", "name": "Granita", "price": null, "tags": [], "available": true, "todo": "price (and flavours?)" },
+        { "id": "tiramisu", "name": "Tiramisu fait maison", "price": null, "tags": [], "available": true, "todo": "price" }
+      ]
+    },
+    {
+      "id": "cafes",
+      "name": { "fr": "Cafés", "en": "Coffee", "it": "Caffè" },
+      "layout": "list",
+      "items": [],
+      "extras": [
+        { "id": "lait-vegetal", "name": { "fr": "Lait végétal", "en": "Plant milk", "it": "Latte vegetale" }, "price": 100 },
+        { "id": "decafeine", "name": { "fr": "Décaféiné", "en": "Decaf", "it": "Decaffeinato" }, "price": 100 },
+        { "id": "sirop", "name": { "fr": "Sirop", "en": "Syrup", "it": "Sciroppo" }, "price": 50 }
+      ]
+    },
+    { "id": "softs-italiens", "name": { "fr": "Softs italiens", "en": "Italian soft drinks", "it": "Bibite italiane" }, "layout": "list", "items": [] },
+    { "id": "softs", "name": { "fr": "Softs", "en": "Soft drinks", "it": "Bibite" }, "layout": "list", "items": [] },
+    { "id": "aperitif", "name": { "fr": "Apéritif et vins", "en": "Aperitivo and wine", "it": "Aperitivo e vini" }, "layout": "list", "legal_notice": true, "items": [] }
+  ]
+}

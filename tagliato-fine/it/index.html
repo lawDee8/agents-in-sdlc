@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
+  <title>Tagliato Fine · Charcuterie · Pizzicheria · Cannes</title>
+  <meta name="description" content="Tagliato Fine, caffè italiano a Cannes: focacce, insalate, granita siciliana, caffè e aperitivo.">
+  <link rel="alternate" hreflang="fr" href="/">
+  <link rel="alternate" hreflang="en" href="/en/">
+  <link rel="alternate" hreflang="it" href="/it/">
+  <link rel="alternate" hreflang="x-default" href="/">
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+  <link rel="preload" href="../fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="module" src="../js/main.js"></script>
+</head>
+<body data-page="home" data-prefix="../">
+  <a class="skip-link" href="#contenu">Vai al contenuto</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="logo" href="./">
+        <img src="../img/logo.svg" alt="" width="40" height="40">
+        <span>Tagliato Fine</span>
+      </a>
+      <div class="header-tools">
+        <nav aria-label="Lingua">
+          <ul class="lang-switch">
+            <li><a href="../" lang="fr" hreflang="fr">FR</a></li>
+            <li><a href="../en/" lang="en" hreflang="en">EN</a></li>
+            <li><a href="../it/" lang="it" aria-current="page">IT</a></li>
+          </ul>
+        </nav>
+        <button class="theme-toggle" type="button" id="theme-toggle" hidden>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/><circle cx="12" cy="12" r="4.5"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="wrap main-nav" aria-label="Navigazione principale">
+      <ul>
+        <li><a href="carte.html">Vedi il menu</a></li>
+        <li><a href="contact.html">Contatti</a></li>
+      </ul>
+    </nav>
+    <p class="status wrap" id="status" aria-live="polite" hidden></p>
+  </header>
+  <main id="contenu">
+    <noscript><p class="wrap"><span class="panel noscript">Per vedere il menu e gli orari, attiva JavaScript.</span></p></noscript>
+    <section class="wrap" aria-labelledby="hero-title">
+      <div class="panel frame hero">
+        <h1 class="hero-name" id="hero-title">Tagliato Fine</h1>
+        <p class="hero-sub">Charcuterie · Pizzicheria</p>
+        <p>Focacce, insalate, granita siciliana e caffè italiano a Cannes.</p>
+        <p class="actions"><a class="btn" href="carte.html">Vedi il menu</a></p>
+      </div>
+    </section>
+
+    <section class="wrap" id="formules" aria-labelledby="formules-title" hidden>
+      <div class="panel">
+        <h2 id="formules-title"><span class="script">Le nostre</span> formule di oggi</h2>
+        <ul class="rows" id="formules-list"></ul>
+      </div>
+    </section>
+
+    <section class="wrap" id="signatures" aria-labelledby="signatures-title" hidden>
+      <div class="panel">
+        <h2 id="signatures-title"><span class="script">I nostri</span> imperdibili</h2>
+        <ul class="cards" id="signatures-list"></ul>
+      </div>
+    </section>
+
+    <section class="wrap" aria-labelledby="acces-title">
+      <div class="panel">
+        <h2 id="acces-title">Dove siamo</h2>
+        <address id="address"></address>
+        <p class="actions" id="contact-actions">
+          <a class="btn btn-quiet" href="contact.html">Indirizzo e orari</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p id="footer-hours"></p>
+      <p id="footer-instagram" hidden></p>
+      <ul>
+        <li><a href="carte.html">Il menu</a></li>
+        <li><a href="contact.html">Contatti</a></li>
+        <li><a href="mentions-legales.html">Note legali</a></li>
+        <li><a href="confidentialite.html">Privacy</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
