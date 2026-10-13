@@ -41,7 +41,7 @@ Covers: open/closed at 07:59, 08:00, 21:59, 22:00 (summer and winter time), them
 
 ## Deploy (alwaysdata)
 
-Upload everything except `tests/`, `tools/`, `CLAUDE.md`, `README.md`, `GUIDE-PROPRIETAIRE.md`.
+Upload everything except `tests/`, `tools/`, `qr/`, `CLAUDE.md`, `README.md`, `GUIDE-PROPRIETAIRE.md`.
 
 Before going live:
 1. Replace `DOMAINE-A-COMPLETER.fr` in `robots.txt` and `sitemap.xml`; set `SITE_URL` in `tools/build-pages.py` and rerun it (absolute `hreflang`).
@@ -52,6 +52,16 @@ Before going live:
 ```
 default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'none'
 ```
+
+## QR code and table cards
+
+`qr/` holds the print files: `qr-code.svg` / `qr-code.png` (plain black on white) and two A4 sheets of 4 table cards (`cartes-table-A4-clair.pdf`, `cartes-table-A4-sombre.pdf`). The encoded address is in `qr/URL.txt`.
+
+- Print at **100 % / actual size** (never "fit to page"), 250–300 g/m² card, cut on the crop marks (cards 95 × 138 mm).
+- Error correction H (30 %), QR 46 mm wide: readable from about 45 cm.
+- A printed QR can never change. If the address changes, regenerate and reprint:
+  `pip install segno reportlab fonttools brotli && python3 tools/make-qr.py https://final-address/`
+- Do not upload `qr/` to the site.
 
 ## Design notes
 
